@@ -11,7 +11,7 @@ $(document).ready(function () {
       }
       let len = Object.keys(list).length;
       let amen = () => {
-      let names = '';
+        let names = '';
         for (amenity in list) {
           if (len > 1) {
             names += list[amenity] + ', ';
@@ -22,55 +22,58 @@ $(document).ready(function () {
         }
         return names;
       };
-      $('.amenities >h4').text(amen);
+      $('.amenities > h4').text(amen);
     });
   });
-})
 
-$('button').click(function () {
-  $.ajax({
-    type: 'POST',
-    url: 'http://0.0.0.0:5001/api/v1/places_search/',
-    contentType: 'application/json; charset=utf-8',
-    success: function (data) {
-      for (element of data) {
-        console.log(element);
-        $('.places').append(
-          `<article id=` +
-            element.id +
-            `>
-        <div class="title_box">
-          <h2>` +
-            element.name +
-            `</h2>
-          <div class="price_by_night">` +
-            element.price_by_night +
-            `</div>
-        </div>
-        <div class="information">
-          <div class="max_guest">
-            ` +
-            element.max_guest +
-            ` Guests
+  $('button').click(function () {
+    $.ajax({
+      type: 'POST',
+      url: 'http://0.0.0.0:5001/api/v1/places_search/',
+      contentType: 'application/json; charset=utf-8',
+      success: function (data) {
+        $(document).ready(() => {
+          $('.places').empty();
+          for (element of data) {
+            console.log(element);
+            $('.places').append(
+              `<article id=` +
+                element.id +
+                `>
+          <div class="title_box">
+            <h2>` +
+                element.name +
+                `</h2>
+            <div class="price_by_night">` +
+                element.price_by_night +
+                `</div>
           </div>
-          <div class="number_rooms">
-            ` +
-            element.number_rooms +
-            ` Bedrooms
-          </div>
-          <div class="number_bathrooms">
-            ` +
-            element.number_bathrooms +
-            `Bathrooms
+          <div class="information">
+            <div class="max_guest">
+              ` +
+                element.max_guest +
+                ` Guests
             </div>
-        </div>
-        <div class="description">` +
-            element.description +
-            `</div>
-      </article>`
-        );
-      }
-    },
-    data: JSON.stringify(JSON.stringify(Object.keys(list))),
-  })
+            <div class="number_rooms">
+              ` +
+                element.number_rooms +
+                ` Bedrooms
+            </div>
+            <div class="number_bathrooms">
+              ` +
+                element.number_bathrooms +
+                `Bathrooms
+              </div>
+          </div>
+          <div class="description">` +
+                element.description +
+                `</div>
+        </article>`
+            );
+          }
+        });
+      },
+      data: JSON.stringify({ amenities: Object.keys(list) }),
+    });
+  });
 });
