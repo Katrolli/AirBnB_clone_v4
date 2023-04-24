@@ -3,7 +3,7 @@ $.ajax({
   url: 'http://0.0.0.0:5001/api/v1/places_search/',
   contentType: 'application/json; charset=utf-8',
   success: function (data) {
-    console.log('succ');
+    console.log(data);
     for (element of data) {
       $(document).ready(function () {
         $('.places').append(() => {
