@@ -135,15 +135,12 @@ def places_search():
         cities = data.get('cities', None)
         amenities = data.get('amenities', None)
 
-    if not data or not len(data) or (
-            not states and
-            not cities and
-            not amenities):
-        places = storage.all(Place).values()
-        list_places = []
-        for place in places:
-            list_places.append(place.to_dict())
-        return jsonify(list_places)
+
+    places = storage.all(Place).values()
+    list_places = []
+    for place in places:
+        list_places.append(place.to_dict())
+    return jsonify(list_places)
 
     list_places = []
     if states:
