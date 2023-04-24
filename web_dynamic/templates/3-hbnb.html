@@ -8,10 +8,7 @@
       type="text/css"
       href="../static/styles/4-common.css?{{cache_id}}"
     />
-    <script
-      type="text/javascript"
-      href="../static/scripts/1-hbnb.js?{{cache_id}}"
-    ></script>
+    <script type="text/javascript" src="../static/scripts/3-hbnb.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -37,8 +34,11 @@
     <title>HBnB</title>
   </head>
   <body>
-    <header>
+    <header
+      style="display: flex; flex-direction: row; justify-content: space-between"
+    >
       <div class="logo"></div>
+      <div id="api_status" class="notaba"></div>
     </header>
     <div class="container">
       <section class="filters">
@@ -69,12 +69,20 @@
               <li style="display: flex; flex-direction: row">
                 <input
                   type="checkbox"
-                  data-id=":amenity_id"
-                  data-name=":amenity_name"
+                  data-id="{{amenity.id}}"
+                  data-name="{{amenity.name}}"
                 />
-                <p style="margin-left: 10px">{{amenity.name }}</p>
+                <p style="margin-left: 10px">{{ amenity.name }}</p>
               </li>
               {% endfor %}
+              <li style="display: flex; flex-direction: row">
+                <input type="checkbox" data-id="id1" data-name="name1" />
+                <p style="margin-left: 10px">ktu</p>
+              </li>
+              <li style="display: flex; flex-direction: row">
+                <input type="checkbox" data-id="id2" data-name="name2" />
+                <p style="margin-left: 10px">kto</p>
+              </li>
             </ul>
           </div>
         </div>
@@ -83,7 +91,7 @@
       <div class="placesh1"><h1>Places</h1></div>
       <section class="places">
         <h1>Places</h1>
-        {% for place in places %}
+        <!-- {% for place in places %}
         <article>
           <div class="title_box">
             <h2>{{ place.name }}</h2>
@@ -108,7 +116,7 @@
           </div>
           <div class="description">{{ place.description | safe }}</div>
         </article>
-        {% endfor %}
+        {% endfor %} -->
       </section>
     </div>
     <footer>

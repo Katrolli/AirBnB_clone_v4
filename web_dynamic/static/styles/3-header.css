@@ -8,4 +8,17 @@ header .logo {
     background: url("../images/logo.png") no-repeat;
     left: 20px;
     height: 100%;
+    width: 100%;
+}
+.notaba {
+    background-color: #cccccc;
+          height: 40px;
+          width: 40px;
+          border-radius: 20px;
+          margin-top: 1rem;
+          margin-right: 0.5rem;
+}
+.available {
+    background:  #ff545f;
+
 }
