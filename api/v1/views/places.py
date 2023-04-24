@@ -140,6 +140,7 @@ def places_search():
     list_places = []
     for place in places:
         list_places.append(place.to_dict())
+    print(list_places)
     return jsonify(list_places)
 
     list_places = []
